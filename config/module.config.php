@@ -1,14 +1,29 @@
 <?php
+  
 return [
+    'view_manager' => [
+        'template_path_stack' => [
+            OMEKA_PATH.'/modules/CSSEditor/view',
+        ],
+    ],
+    'controllers' => [
+        'invokables' => [
+            'CssEditor\Controller\Admin\Index' => 'CssEditor\Controller\Admin\IndexController',
+        ],
+    ],
     'navigation' => [
         'site' => [
-            'label' => 'CSS Editor', // @translate
-            'route' => 'admin/site/slug/csseditor/default',
-            'action' => 'index'.
-            'useRouteMatch' => true.
-            'pages' => [
+            [
+                'label' => 'CSS Editor', // @translate
                 'route' => 'admin/site/slug/csseditor/default',
-                'visible' => false,
+                'action' => 'index',
+                'useRouteMatch' => true.
+                'pages' => [
+                    [
+                        'route' => 'admin/site/slug/csseditor/default',                      
+                        'visible' => false,
+                    ],
+                ],
             ],
         ],
     ],
@@ -17,26 +32,29 @@ return [
             'admin' => [
                 'child_routes' => [
                     'site' => [
-                        'slug' => [
-                            'child_routes' => [
-                                'csseditor' => [
-                                    'type' => 'Literal',
-                                    'options' => [
-                                        'route' => '/csseditor',
-                                        'defaults' => 
-                                            '__NAMESPACE__' => 'CSSEditor\Controller\Admin',
-                                            'controller' => 'index',
-                                            'action' => 'index',
-                                    ],
-                                ],
-                                'may_terminate' => true,
+                        'child_routes' => [
+                            'slug' => [
                                 'child_routes' => [
-                                    'default' => [
-                                        'type' => 'Segment',
+                                    'csseditor' => [
+                                        'type' => 'Literal',
                                         'options' => [
-                                            'route' => '/:action',
-                                            'constraints' => [
-                                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                            'route' => '/csseditor',
+                                            'defaults' => [
+                                                '__NAMESPACE__' => 'CssEditor\Controller\Admin',
+                                                'controller' => 'index',
+                                                'action' => 'index',
+                                            ],
+                                        ],
+                                        'may_terminate' => true,
+                                        'child_routes' => [ 
+                                            'default' => [
+                                                'type' => 'Segment',
+                                                'options' => [
+                                                    'route' => '/:action',
+                                                    'constraints' => [
+                                                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                                    ],
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -46,11 +64,6 @@ return [
                     ],
                 ],
             ],
-        ],
-    ],
-    'controllers' => [
-        'invokables' => [
-            'CSSEditor\Controller\SiteAdmin\Form' => 'CSSEditor\Controller\SiteAdmin\FormController',
         ],
     ],
 ];
