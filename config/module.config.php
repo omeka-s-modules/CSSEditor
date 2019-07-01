@@ -17,7 +17,7 @@ return [
                 'label' => 'CSS Editor', // @translate
                 'route' => 'admin/site/slug/csseditor/default',
                 'action' => 'index',
-                'useRouteMatch' => true.
+                'useRouteMatch' => true,
                 'pages' => [
                     [
                         'route' => 'admin/site/slug/csseditor/default',                      
