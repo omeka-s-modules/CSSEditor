@@ -1,7 +1,44 @@
 <?php
+$this->headLink()->appendStylesheet($this->assetUrl('css/csseditor.css', 'CSSEditor'));
+$this->headScript()->appendFile($this->assetUrl('js/csseditor.js', 'CSSEditor'));
 echo $this->pageTitle($this->translate('CSS Editor'));
 ?>
+
+<?php echo $this->form()->openTag($form); ?>
 
 <div id="page-actions">
   <button type="submit"><?php echo $this->translate('Save'); ?></button>
 </div>
+
+<div class="field">
+    <div class="field-meta">
+        <label for="custom-css"><?php echo $this->translate('CSS'); ?></label>
+    </div>
+    <div class="inputs">
+        <textarea rows="20" name="custom-css" id="custom-css">
+    </textarea>
+    </div>
+</div>
+
+<div class="field external-css">
+    <div class="field-meta">
+          <label id="external-css-label"><?php echo $this->translate('External stylesheets'); ?></label>
+    </div>
+    <div class="inputs">
+        <div class="values">
+            <div class="value external-css-value">
+                <div class="input-body">
+                    <input type="text" name="external-css[0]" aria-labelledby="external-css-label" data-field-count="0">
+                </div>
+                <div class="input-footer">
+                    <ul class="actions">
+                        <li><a class="o-icon-delete remove-value" title="Remove value" href="#" aria-label="Remove value"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="add-value o-icon-add"><?php echo $this->translate('Add another stylesheet'); ?></button>
+    </div>
+</div>
+
+<?php echo $this->form()->closeTag($form); ?>
