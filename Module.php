@@ -13,7 +13,8 @@ class Module extends AbstractModule
         return include __DIR__.'/config/module.config.php';
     }
 
-    public function addCSS(Event $event) {
+    public function addCSS(Event $event) 
+    {
         $view = $event->getTarget();
         $view->headLink()->appendStylesheet($view->url('site/css-editor', [
             'site-slug' => $view->site->slug(),
@@ -31,7 +32,17 @@ class Module extends AbstractModule
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
-        $sharedEventManager->attach('*', 'view.layout', [$this, 'addCSS']);
+        $controllers = [
+            'Omeka\Controller\Site\Index',
+            'Omeka\Controller\Site\Item',
+            'Omeka\Controller\Site\ItemSet',
+            'Omeka\Controller\Site\Media',
+            'Omeka\Controller\Site\Page',
+        ];
+
+        foreach ($controllers as $controller) {          
+            $sharedEventManager->attach($controller, 'view.layout', [$this, 'addCSS']);
+        }
     }
 } 
 
