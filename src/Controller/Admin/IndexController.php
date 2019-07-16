@@ -21,7 +21,7 @@ class IndexController extends AbstractActionController
                 $css = '';
             }
             if (isset($params['external-css'])) {
-                $externalCss = $params['external-css'];
+                $externalCss = array_filter($params['external-css']);
             } else {
                 $externalCss = [];
             }
