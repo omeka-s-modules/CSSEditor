@@ -15,7 +15,18 @@ class Module extends AbstractModule
 
     public function addCSS(Event $event) {
         $view = $event->getTarget();
-        $view->headLink()->appendStylesheet($view->assetUrl('css/csseditor.css', 'CSSEditor'));
+        $view->headLink()->appendStylesheet($view->url('site/css-editor', [
+            'site-slug' => $view->site->slug(),
+        ]));
+
+        $services = $this->getServiceLocator();
+        $siteSettings = $services->get('Omeka\Settings\Site');
+        $externalCss = $siteSettings->get('css_editor_external_css');
+        if ($externalCss) {
+            foreach ($externalCss as $uri) {
+                $view->headLink()->appendStylesheet($uri);
+            }
+        }
     }
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)

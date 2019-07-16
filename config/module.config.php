@@ -9,18 +9,19 @@ return [
     'controllers' => [
         'invokables' => [
             'CssEditor\Controller\Admin\Index' => 'CssEditor\Controller\Admin\IndexController',
+            'CssEditor\Controller\Site\Index' => 'CssEditor\Controller\Site\IndexController',
         ],
     ],
     'navigation' => [
         'site' => [
             [
                 'label' => 'CSS Editor', // @translate
-                'route' => 'admin/site/slug/csseditor/default',
+                'route' => 'admin/site/slug/css-editor/default',
                 'action' => 'index',
                 'useRouteMatch' => true,
                 'pages' => [
                     [
-                        'route' => 'admin/site/slug/csseditor/default',                      
+                        'route' => 'admin/site/slug/css-editor/default',                      
                         'visible' => false,
                     ],
                 ],
@@ -35,10 +36,10 @@ return [
                         'child_routes' => [
                             'slug' => [
                                 'child_routes' => [
-                                    'csseditor' => [
+                                    'css-editor' => [
                                         'type' => 'Literal',
                                         'options' => [
-                                            'route' => '/csseditor',
+                                            'route' => '/css-editor',
                                             'defaults' => [
                                                 '__NAMESPACE__' => 'CssEditor\Controller\Admin',
                                                 'controller' => 'index',
@@ -59,6 +60,21 @@ return [
                                         ],
                                     ],
                                 ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'site' => [
+                'child_routes' => [
+                    'css-editor' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/css-editor',
+                            'defaults' => [
+                                '__NAMESPACE__' => 'CssEditor\Controller\Site',
+                                'controller' => 'index',
+                                'action' => 'index',
                             ],
                         ],
                     ],
