@@ -6,6 +6,7 @@
             var fieldCount = templateInput.data('field-count') + 1;
             templateInput.attr('name', 'external-css[' + fieldCount + ']');
             templateInput.attr('data-field-count', fieldCount);
+            templateInput.val('');
             $('.external-css .values').append(template);
         });
         
