@@ -27,6 +27,7 @@ class IndexController extends AbstractActionController
             }
             $siteSettings->set('css_editor_css', $css);
             $siteSettings->set('css_editor_external_css', $externalCss);
+            $this->messenger()->addSuccess('CSS successfully updated.'); // @translate
         }
         $css = $siteSettings->get('css_editor_css');
         $externalCss = $siteSettings->get('css_editor_external_css');
