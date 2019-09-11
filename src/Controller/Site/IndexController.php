@@ -1,5 +1,5 @@
 <?php
-namespace CssEditor\Controller\Site;
+namespace CSSEditor\Controller\Site;
 
 use Zend\Mvc\Controller\AbstractActionController;
 

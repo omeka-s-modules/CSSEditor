@@ -1,6 +1,6 @@
 <?php 
 
-namespace CssEditor;
+namespace CSSEditor;
 
 use Omeka\Module\AbstractModule;
 use Zend\EventManager\Event;

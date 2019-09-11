@@ -1,6 +1,6 @@
 <?php
 
-namespace CssEditor\Controller\Admin;
+namespace CSSEditor\Controller\Admin;
 
 use Zend\View\Model\ViewModel;
 use Zend\Mvc\Controller\AbstractActionController;

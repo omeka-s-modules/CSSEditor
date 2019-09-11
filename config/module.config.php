@@ -8,8 +8,8 @@ return [
     ],
     'controllers' => [
         'invokables' => [
-            'CssEditor\Controller\Admin\Index' => 'CssEditor\Controller\Admin\IndexController',
-            'CssEditor\Controller\Site\Index' => 'CssEditor\Controller\Site\IndexController',
+            'CSSEditor\Controller\Admin\Index' => 'CSSEditor\Controller\Admin\IndexController',
+            'CSSEditor\Controller\Site\Index' => 'CSSEditor\Controller\Site\IndexController',
         ],
     ],
     'navigation' => [
@@ -41,7 +41,7 @@ return [
                                         'options' => [
                                             'route' => '/css-editor',
                                             'defaults' => [
-                                                '__NAMESPACE__' => 'CssEditor\Controller\Admin',
+                                                '__NAMESPACE__' => 'CSSEditor\Controller\Admin',
                                                 'controller' => 'index',
                                                 'action' => 'index',
                                             ],
@@ -72,7 +72,7 @@ return [
                         'options' => [
                             'route' => '/css-editor',
                             'defaults' => [
-                                '__NAMESPACE__' => 'CssEditor\Controller\Site',
+                                '__NAMESPACE__' => 'CSSEditor\Controller\Site',
                                 'controller' => 'index',
                                 'action' => 'index',
                             ],
