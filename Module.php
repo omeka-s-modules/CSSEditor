@@ -4,6 +4,7 @@ namespace CSSEditor;
 
 use Omeka\Module\AbstractModule;
 use Zend\EventManager\Event;
+use Zend\Mvc\MvcEvent;
 use Zend\EventManager\SharedEventManagerInterface;
 
 class Module extends AbstractModule 
@@ -11,6 +12,16 @@ class Module extends AbstractModule
     public function getConfig()
     {
         return include __DIR__.'/config/module.config.php';
+    }
+
+    public function onBootstrap(MvcEvent $event)
+    {
+        parent::onBootstrap($event);
+        $acl = $this->getServiceLocator()->get('Omeka\Acl');
+        $acl->allow(
+            null,
+            'CSSEditor\Controller\Site\Index'
+        );
     }
 
     public function addCSS(Event $event) 
