@@ -3,6 +3,7 @@
 namespace CSSEditor;
 
 use Omeka\Module\AbstractModule;
+use Omeka\Permissions\Assertion\HasSitePermissionAssertion;
 use Zend\EventManager\Event;
 use Zend\Mvc\MvcEvent;
 use Zend\EventManager\SharedEventManagerInterface;
@@ -21,6 +22,16 @@ class Module extends AbstractModule
         $acl->allow(
             null,
             'CSSEditor\Controller\Site\Index'
+        );
+        $acl->allow(
+            null,
+            'CSSEditor\Controller\Admin\Index'
+        );
+        $acl->allow(
+            null,
+            'Omeka\Entity\Site',
+            'css-editor-modify',
+            new HasSitePermissionAssertion('admin')
         );
     }
 
