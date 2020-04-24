@@ -4,6 +4,8 @@ namespace CSSEditor;
 
 use Omeka\Module\AbstractModule;
 use Omeka\Permissions\Assertion\HasSitePermissionAssertion;
+use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\EventManager\Event;
 use Zend\EventManager\Event;
 use Zend\Mvc\MvcEvent;
 use Zend\EventManager\SharedEventManagerInterface;
