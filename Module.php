@@ -37,12 +37,14 @@ class Module extends AbstractModule
 
     public function addCSS(Event $event) 
     {
+        $services = $this->getServiceLocator();
+        if (!$services->get('Omeka\Status')->isSiteRequest()) {
+            return;
+        }
         $view = $event->getTarget();
         $view->headLink()->appendStylesheet($view->url('site/css-editor', [
             'site-slug' => $view->site->slug(),
         ]));
-
-        $services = $this->getServiceLocator();
         $siteSettings = $services->get('Omeka\Settings\Site');
         $externalCss = $siteSettings->get('css_editor_external_css');
         if ($externalCss) {
@@ -54,17 +56,8 @@ class Module extends AbstractModule
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
-        $controllers = [
-            'Omeka\Controller\Site\Index',
-            'Omeka\Controller\Site\Item',
-            'Omeka\Controller\Site\ItemSet',
-            'Omeka\Controller\Site\Media',
-            'Omeka\Controller\Site\Page',
-        ];
 
-        foreach ($controllers as $controller) {          
-            $sharedEventManager->attach($controller, 'view.layout', [$this, 'addCSS']);
-        }
+        $sharedEventManager->attach('*', 'view.layout', [$this, 'addCSS']);
     }
 } 
 
