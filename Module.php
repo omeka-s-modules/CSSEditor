@@ -40,19 +40,18 @@ class Module extends AbstractModule
         $services = $this->getServiceLocator();
         if (!$services->get('Omeka\Status')->isSiteRequest()) {
             return;
-        } else {
-            $view = $event->getTarget();
-            $view->headLink()->appendStylesheet($view->url('site/css-editor', [
-                'site-slug' => $view->site->slug(),
-            ]));
-            $siteSettings = $services->get('Omeka\Settings\Site');
-            $externalCss = $siteSettings->get('css_editor_external_css');
-            if ($externalCss) {
-                foreach ($externalCss as $uri) {
-                    $view->headLink()->appendStylesheet($uri);
-                }
+        }
+        $view = $event->getTarget();
+        $view->headLink()->appendStylesheet($view->url('site/css-editor', [
+            'site-slug' => $view->site->slug(),
+        ]));
+        $siteSettings = $services->get('Omeka\Settings\Site');
+        $externalCss = $siteSettings->get('css_editor_external_css');
+        if ($externalCss) {
+            foreach ($externalCss as $uri) {
+                $view->headLink()->appendStylesheet($uri);
             }
-        }      
+        }
     }
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
