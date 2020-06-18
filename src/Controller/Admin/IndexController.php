@@ -3,9 +3,9 @@
 namespace CSSEditor\Controller\Admin;
 
 use Omeka\Mvc\Exception;
-use Zend\View\Model\ViewModel;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Form\Form;
+use Laminas\View\Model\ViewModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\Form\Form;
 
 class IndexController extends AbstractActionController
 {

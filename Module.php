@@ -4,9 +4,9 @@ namespace CSSEditor;
 
 use Omeka\Module\AbstractModule;
 use Omeka\Permissions\Assertion\HasSitePermissionAssertion;
-use Zend\EventManager\Event;
-use Zend\Mvc\MvcEvent;
-use Zend\EventManager\SharedEventManagerInterface;
+use Laminas\EventManager\Event;
+use Laminas\Mvc\MvcEvent;
+use Laminas\EventManager\SharedEventManagerInterface;
 
 class Module extends AbstractModule 
 {
