@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace CSSEditor;
 
@@ -8,11 +8,11 @@ use Laminas\EventManager\Event;
 use Laminas\Mvc\MvcEvent;
 use Laminas\EventManager\SharedEventManagerInterface;
 
-class Module extends AbstractModule 
+class Module extends AbstractModule
 {
     public function getConfig()
     {
-        return include __DIR__.'/config/module.config.php';
+        return include __DIR__ . '/config/module.config.php';
     }
 
     public function onBootstrap(MvcEvent $event)
@@ -35,7 +35,7 @@ class Module extends AbstractModule
         );
     }
 
-    public function addCSS(Event $event) 
+    public function addCSS(Event $event)
     {
         $services = $this->getServiceLocator();
         if (!$services->get('Omeka\Status')->isSiteRequest()) {
@@ -56,9 +56,6 @@ class Module extends AbstractModule
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
-
         $sharedEventManager->attach('*', 'view.layout', [$this, 'addCSS']);
     }
-} 
-
-?>
+}

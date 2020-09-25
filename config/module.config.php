@@ -1,9 +1,9 @@
 <?php
-  
+
 return [
     'view_manager' => [
         'template_path_stack' => [
-            OMEKA_PATH.'/modules/CSSEditor/view',
+            OMEKA_PATH . '/modules/CSSEditor/view',
         ],
     ],
     'controllers' => [
@@ -22,7 +22,7 @@ return [
                 'useRouteMatch' => true,
                 'pages' => [
                     [
-                        'route' => 'admin/site/slug/css-editor/default',                      
+                        'route' => 'admin/site/slug/css-editor/default',
                         'visible' => false,
                     ],
                 ],
@@ -48,7 +48,7 @@ return [
                                             ],
                                         ],
                                         'may_terminate' => true,
-                                        'child_routes' => [ 
+                                        'child_routes' => [
                                             'default' => [
                                                 'type' => 'Segment',
                                                 'options' => [

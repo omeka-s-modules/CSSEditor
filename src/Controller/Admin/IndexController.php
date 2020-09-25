@@ -14,7 +14,7 @@ class IndexController extends AbstractActionController
         if (!$this->currentSite()->userIsAllowed('css-editor-modify')) {
             throw new Exception\PermissionDeniedException(
                 'User does not have permission to edit CSS' // @translate
-            ); 
+            );
         }
         $siteSettings = $this->siteSettings();
         $view = new ViewModel();

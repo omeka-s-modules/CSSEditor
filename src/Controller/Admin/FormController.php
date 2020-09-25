@@ -10,7 +10,7 @@ class FormController extends AbstractActionController
     {
         $site = $this->currentSite();
         $this->getRequest()->getQuery()->set('site_id', $site->id());
-        
+
         $view = new ViewModel;
         $view->setVariable('site', $site);
         return $view;
